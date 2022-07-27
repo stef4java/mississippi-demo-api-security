@@ -1,0 +1,34 @@
+server:
+  servlet:
+    context-path: /api-security
+  port: 18080
+
+spring:
+  profiles:
+    active: test
+  application:
+    name: api-security-demo
+
+  redis:
+    database: 11
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+    connect-timeout: 30000ms
+
+# 模拟数据
+mock-data:
+# app列表
+  apps:
+    - appId: app1
+      appSecret: '*a3123AdfjjA%%'
+      appDesc: '应用1'
+    - appId: app2
+      appSecret: 'AA*at)23^fjA%%'
+      appDesc: '应用2'

@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "bce2f20c-e4d5-44e4-9aff-a92d2a9a88c2",
+		"name": "API-Security-Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2488039"
+	},
+	"item": [
+		{
+			"name": "0.获取时间戳",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:18080/api-security/no-auth/ts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"api-security",
+						"no-auth",
+						"ts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.PathVariable示例",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sign",
+						"value": "63152d071be8206593c4438737d8143faabfe08600b767cfe9ac9fb776373af9"
+					},
+					{
+						"key": "appId",
+						"value": "app1",
+						"type": "text"
+					},
+					{
+						"key": "timestamp",
+						"value": "1658556189735",
+						"type": "text"
+					},
+					{
+						"key": "nonce",
+						"value": "234567",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:18080/api-security/api/employees/pathVariable/2/张三/18/研发部",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"api-security",
+						"api",
+						"employees",
+						"pathVariable",
+						"2",
+						"张三",
+						"18",
+						"研发部"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.RequestParam示例",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sign",
+						"value": "63152d071be8206593c4438737d8143faabfe08600b767cfe9ac9fb776373af9"
+					},
+					{
+						"key": "appId",
+						"value": "app1",
+						"type": "text"
+					},
+					{
+						"key": "timestamp",
+						"value": "1658556189735",
+						"type": "text"
+					},
+					{
+						"key": "nonce",
+						"value": "234567",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:18080/api-security/api/employees/pathVariable/2/张三/18/研发部",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"api-security",
+						"api",
+						"employees",
+						"pathVariable",
+						"2",
+						"张三",
+						"18",
+						"研发部"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.RequestBody示例",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sign",
+						"value": "63152d071be8206593c4438737d8143faabfe08600b767cfe9ac9fb776373af9"
+					},
+					{
+						"key": "appId",
+						"value": "app1",
+						"type": "text"
+					},
+					{
+						"key": "timestamp",
+						"value": "1658556189735",
+						"type": "text"
+					},
+					{
+						"key": "nonce",
+						"value": "234567",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":1,\n    \"name\":\"zhangsan\",\n    \"age\":20,\n    \"deptName\":\"产品部\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:18080/api-security/api/employees/requestBody",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"api-security",
+						"api",
+						"employees",
+						"requestBody"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.PathVariable/RequestParam/RequestBody示例",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sign",
+						"value": "63152d071be8206593c4438737d8143faabfe08600b767cfe9ac9fb776373af9"
+					},
+					{
+						"key": "appId",
+						"value": "app1",
+						"type": "text"
+					},
+					{
+						"key": "timestamp",
+						"value": "1658734742408",
+						"type": "text"
+					},
+					{
+						"key": "nonce",
+						"value": "234567",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 20,\n    \"deptName\": \"产品部\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:18080/api-security/api/employees/all/2222222?name=lisi",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"api-security",
+						"api",
+						"employees",
+						"all",
+						"2222222"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "lisi"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
