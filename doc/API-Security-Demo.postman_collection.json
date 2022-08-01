@@ -105,7 +105,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:18080/api-security/api/employees/pathVariable/2/张三/18/研发部",
+					"raw": "http://127.0.0.1:18080/api-security/api/employees/requestParam?id=333&name=lisi&age=66&deptName=总经办",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -118,11 +118,25 @@
 						"api-security",
 						"api",
 						"employees",
-						"pathVariable",
-						"2",
-						"张三",
-						"18",
-						"研发部"
+						"requestParam"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "333"
+						},
+						{
+							"key": "name",
+							"value": "lisi"
+						},
+						{
+							"key": "age",
+							"value": "66"
+						},
+						{
+							"key": "deptName",
+							"value": "总经办"
+						}
 					]
 				}
 			},
@@ -135,21 +149,21 @@
 				"header": [
 					{
 						"key": "sign",
-						"value": "63152d071be8206593c4438737d8143faabfe08600b767cfe9ac9fb776373af9"
+						"value": "5cf15093a151cff187864b4d9e7565134a98c8d1a9efb03096e1957c67be1a88"
 					},
 					{
 						"key": "appId",
-						"value": "app1",
+						"value": "app22222",
 						"type": "text"
 					},
 					{
 						"key": "timestamp",
-						"value": "1658556189735",
+						"value": "1658736229748",
 						"type": "text"
 					},
 					{
 						"key": "nonce",
-						"value": "234567",
+						"value": "2345673",
 						"type": "text"
 					}
 				],

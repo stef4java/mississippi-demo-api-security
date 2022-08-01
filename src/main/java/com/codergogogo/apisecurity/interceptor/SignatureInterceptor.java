@@ -1,9 +1,9 @@
 package com.codergogogo.apisecurity.interceptor;
 
 import com.codergogogo.apisecurity.exception.BusinessException;
+import com.codergogogo.apisecurity.model.AppInfo;
 import com.codergogogo.apisecurity.model.MockAppList;
 import com.codergogogo.apisecurity.utils.sign.SignatureUtils;
-import com.codergogogo.apisecurity.model.AppInfo;
 import com.codergogogo.apisecurity.web.RequestWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
@@ -53,12 +53,14 @@ public class SignatureInterceptor extends HandlerInterceptorAdapter {
         String nonce = request.getHeader("nonce");
         String sign = request.getHeader("sign");
         String appId = request.getHeader("appId");
+        // 0 请求空参数非空，长度校验
         Assert.isTrue(!StringUtils.isEmpty(appId) && !StringUtils.isEmpty(timestamp) && !StringUtils.isEmpty(sign), "参数错误");
+        Assert.isTrue(nonce.length() == 16, "随机串nonce长度需要16位");
 
-        // 1. 拒绝重复调用(第一次访问时存储，过期时间和请求超时时间保持一致), 只有标注不允许重复提交注解的才会校验
+        // 1. 拒绝重复调用(第一次访问时存储，过期时间和请求超时时间保持一致)
         ValueOperations<String, Integer> nonceRedis = redisTemplate.opsForValue();
         boolean exists = redisTemplate.hasKey(nonce);
-        Assert.isTrue(!exists, "nonce非法");
+        Assert.isTrue(!exists, "重复请求,nonce非法");
 
         // 2. 请求时间间隔
         long requestInterval = System.currentTimeMillis() - Long.parseLong(timestamp);
@@ -66,7 +68,7 @@ public class SignatureInterceptor extends HandlerInterceptorAdapter {
 
         // 3. 根据appId查询数据库获取appSecret
         AppInfo appInfo = apps.getApps().stream().filter(app -> app.getAppId().equals(appId)).findAny().orElseThrow(() -> new BusinessException(
-                404, "app not exist"));
+                404, "应用不存在"));
 
         // 4. 校验签名(将所有的参数加进来，防止别人篡改参数) 所有参数看参数名升续排序拼接成url
         // 4.1 获取body（对应@RequestBody）
@@ -97,4 +99,5 @@ public class SignatureInterceptor extends HandlerInterceptorAdapter {
         nonceRedis.set(nonce, 0, expireTime, TimeUnit.MILLISECONDS);
         return super.preHandle(request, response, handler);
     }
+
 }

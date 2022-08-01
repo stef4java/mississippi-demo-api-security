@@ -33,10 +33,10 @@ public class SignatureUtils {
 
         if (ArrayUtils.isNotEmpty(paths)) {
             String pathValues = String.join(",", Arrays.stream(paths).sorted().toArray(String[]::new));
-            sb.append(pathValues);
+            sb.append(pathValues).append('#');
         }
 
-        sb.append(timestamp).append(nonce);
+        sb.append(timestamp).append('#').append(nonce);
         String createSign = HmacUtils.hmacSha256Hex(appSecret, sb.toString());
         log.info("加密内容: {}, 加密结果: {}", sb.toString(),createSign);
         return createSign;
