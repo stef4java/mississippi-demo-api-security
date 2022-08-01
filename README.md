@@ -58,6 +58,7 @@ curl --location --request POST 'http://127.0.0.1:18080/api-security/api/employee
 加密内容: {    "age": 20,    "deptName": "产品部"}#name=lisi#2222222#1659356207348#1234567891234567, 加密结果: 604d478d75be6345d0830f1125cf88be534aed49323b844715fd28e0f3643239
 ```
 
-** 参考文章 **
-[四连问：前后端分离接口应该如何设计？如何保证安全？如何签名？如何防重？]https://mp.weixin.qq.com/s?__biz=MzI1NDY0MTkzNQ==&mid=2247489024&idx=1&sn=1e93fa961a7826705b9f0b6dc1bf5ea6
+##### 参考文章
+
+[四连问：前后端分离接口应该如何设计？如何保证安全？如何签名？如何防重？](https://mp.weixin.qq.com/s?__biz=MzI1NDY0MTkzNQ==&mid=2247489024&idx=1&sn=1e93fa961a7826705b9f0b6dc1bf5ea6)
 
